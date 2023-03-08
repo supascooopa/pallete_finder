@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>home</title>
+    <link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css">
+</head>
+<body>
+<h1>Please upload your picture below to get it's 10 most common colors as a result!</h1>
+<form  method="post" enctype="multipart/form-data">
+    <input type="file" name="file">
+    <button type="submit">submit</button>
+</form>
+{% if colors%}
+{% for i in colors%}
+<span style="display: block;background-color: {{i}}"><a style="color:black">{{i}}</a></span>
+{% endfor %}
+<p>Would you like to download the hex-numbers as an excel</p>
+<a href="{{ url_for('download',color=colors) }}"><button class="btn">Download</button></a>
+{% endif %}
+</body>
+</html>
